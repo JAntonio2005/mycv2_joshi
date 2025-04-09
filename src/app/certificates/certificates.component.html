@@ -1,2 +1,7 @@
-<p>certificates works!</p>
-<p>{{certificatesService.accesoCertificates}}</p>
+<ul>
+    <li *ngFor="let cert of certificates">
+      <strong>{{ cert.title }}</strong> issued by {{ cert.issuer }} <br>
+      Issue Date: {{ cert.issueDate }}
+    </li>
+  </ul>
+  

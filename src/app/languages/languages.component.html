@@ -1,2 +1,5 @@
-<p>languages works!</p>
-<p>{{languagesService.accesoLanguages}}</p>
+<ul>
+    <li *ngFor="let lang of languages">
+      <strong>{{ lang.name }}</strong> - Proficiency: {{ lang.proficiency }}
+    </li>
+  </ul>
