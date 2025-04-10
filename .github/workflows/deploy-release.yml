@@ -32,11 +32,11 @@ jobs:
 
       # Paso 5: Verificar el contenido de la carpeta dist/mycv/browser
       - name: List build directory
-        run: ls -la dist/mycv/browser
+        run: ls -la dist/mycv2/browser
 
       # Paso 6: Copiar los archivos generados a la carpeta docs para GitHub Pages
       - name: Copy build files
-        run: cp -r dist/mycv/browser/* docs/
+        run: cp -r dist/mycv2/browser/* docs/
 
       # Paso 7: Verificar los archivos en la carpeta docs
       - name: List docs directory
