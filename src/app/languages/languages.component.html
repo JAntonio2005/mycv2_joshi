@@ -1,1 +1,5 @@
-<p>languages works!</p>
+<ul>
+    <li *ngFor="let lang of languages">
+      <strong>{{ lang.name }}</strong> - Proficiency: {{ lang.proficiency }}
+    </li>
+  </ul>

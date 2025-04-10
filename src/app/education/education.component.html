@@ -1,1 +1,8 @@
-<p>education works!</p>
+<ul>
+    <li *ngFor="let edu of education">
+      <strong>{{ edu.degree }}</strong> from {{ edu.institution }} <br>
+      Start Date: {{ edu.startDate }} - End Date: {{ edu.endDate }} <br>
+      Location: {{ edu.location }}
+    </li>
+  </ul>
+  
