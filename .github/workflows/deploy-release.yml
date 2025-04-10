@@ -1,0 +1,55 @@
+name: CI/CD deploy release
+
+on:
+  push:
+    branches:
+      - "deploy-release"
+  pull_request:
+    branches:
+      - "deploy-release"
+
+jobs:
+  ci_cd_deploy_release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Paso 1: Checkout el código del repositorio
+      - uses: actions/checkout@v2
+      
+      # Paso 2: Configurar Node.js (usamos la versión 20.x)
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20.x
+
+      # Paso 3: Instalar las dependencias del proyecto
+      - name: Install dependencies
+        run: npm ci
+
+      # Paso 4: Construir la aplicación Angular en modo de producción
+      - name: Build application
+        run: npm run build --configuration=production
+
+      # Paso 5: Verificar el contenido de la carpeta dist/mycv/browser
+      - name: List build directory
+        run: ls -la dist/mycv/browser
+
+      # Paso 6: Copiar los archivos generados a la carpeta docs para GitHub Pages
+      - name: Copy build files
+        run: cp -r dist/mycv/browser/* docs/
+
+      # Paso 7: Verificar los archivos en la carpeta docs
+      - name: List docs directory
+        run: ls -la docs
+
+      # Paso 8: Hacer commit de los cambios en la rama gh-pages
+      - name: Commit and push docs to gh-pages
+        env:
+          CI_COMMIT_MESSAGE: "Deploy new release"
+          CI_COMMIT_AUTHOR: "GitHub Actions"
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "joseantonioortizhernandez777@gmail.com"
+          git add docs
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push origin gh-pages
