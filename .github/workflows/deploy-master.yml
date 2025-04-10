@@ -1,0 +1,50 @@
+name: CI/CD deploy master
+
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - "master"
+
+jobs:
+  ci_cd_deploy_master:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Checkout el código del repositorio
+      - uses: actions/checkout@v2
+
+      # Paso 2: Configurar Node.js (usamos la versión 20.x)
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20.x
+
+      # Paso 3: Instalar las dependencias del proyecto
+      - name: Install dependencies
+        run: npm ci
+
+      # Paso 4: Construir la aplicación Angular en modo de producción
+      - name: Build application
+        run: npm run build --configuration=production
+
+      # Paso 5: Construir la imagen Docker para la aplicación
+      - name: Build Docker image
+        run: docker build -t mycv2-angular .
+
+      # Paso 6: Hacer login en Docker Hub
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Paso 7: Subir la imagen Docker a Docker Hub
+      - name: Push Docker image
+        run: docker push mycv2-angular
+
+      # Paso 8: Verificar que la imagen haya sido subida
+      - name: List Docker images
+        run: docker images
