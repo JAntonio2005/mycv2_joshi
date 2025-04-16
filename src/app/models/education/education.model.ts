@@ -1,8 +1,12 @@
 export class Education {
     id?: string;
-    degree?: string = 'Degree Name';
-    endDate?: string = 'mmm-yyyy';
-    institution?: string = 'Institution Name';
-    location?: string = 'city, country';
-    startDate?: string = 'mmm-yyyy';
-}  
+    educativeInstitute: string;
+    date: string;
+    grade: string;
+  
+    constructor() {
+      this.educativeInstitute = '';
+      this.date = '';
+      this.grade = '';
+    }
+  }

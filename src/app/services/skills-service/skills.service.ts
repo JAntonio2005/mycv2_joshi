@@ -1,16 +1,29 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Skill } from '../../models/skills/skills.model';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Skills } from '../../models/skills/skills.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SkillService {
-  private dbPath = '/skills';  // Ruta de la colección en Firebase
+export class SkillsService {
+  private collectionName = 'Skills';
+  private skillsRef: AngularFirestoreCollection<Skills>;
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) {
+    this.skillsRef = this.firestore.collection<Skills>(this.collectionName);
+  }
 
-  getSkills() {
-    return this.db.collection<Skill>(this.dbPath).snapshotChanges();
+  getSkills(): Observable<Skills[]> {
+    return this.skillsRef.snapshotChanges().pipe(
+      map(actions =>
+        actions.map(a => {
+          const data = a.payload.doc.data() as Skills;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
   }
 }

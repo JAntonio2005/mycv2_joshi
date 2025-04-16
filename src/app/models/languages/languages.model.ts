@@ -1,5 +1,10 @@
-export class Language {
+export class Languages {
     id?: string;
-    name?: string = 'Language Name';  // Nombre del idioma
-    proficiency?: string = 'Proficiency Level';  // Nivel de competencia
-}  
+    language: string;
+    percentage: string;
+  
+    constructor() {
+      this.language = '';
+      this.percentage = '';
+    }
+  }

@@ -1,16 +1,29 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Interest } from '../../models/interests/interests.model';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Interests } from '../../models/interests/interests.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterestService {
-  private dbPath = '/interests';  // Ruta a la colección en Firebase
+  private collectionName = 'Interests';
+  private interestRef: AngularFirestoreCollection<Interests>;
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) {
+    this.interestRef = this.firestore.collection<Interests>(this.collectionName);
+  }
 
-  getInterests() {
-    return this.db.collection<Interest>(this.dbPath).snapshotChanges();
+  getInterests(): Observable<Interests[]> {
+    return this.interestRef.snapshotChanges().pipe(
+      map(actions =>
+        actions.map(a => {
+          const data = a.payload.doc.data() as Interests;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
   }
 }

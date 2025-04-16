@@ -1,5 +1,10 @@
-export class Skill {
+export class Skills {
     id?: string;
-    level?: string = 'Beginner';  // Nivel de habilidad, valor predeterminado
-    name?: string = 'Skill Name';  // Nombre de la habilidad, valor predeterminado
-}  
+    Areas: string;
+    languagues: string;
+  
+    constructor() {
+      this.Areas = '';
+      this.languagues = '';
+    }
+  }

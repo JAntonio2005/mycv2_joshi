@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SkillService } from '../services/skills-service/skills.service';
-import { Skill } from '../models/skills/skills.model';
+import { SkillsService } from '../services/skills-service/skills.service';
+import { Skills } from '../models/skills/skills.model';
 
 @Component({
   selector: 'app-skills',
@@ -8,16 +8,14 @@ import { Skill } from '../models/skills/skills.model';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-  skills: Skill[] = [];
+  skills: Skills[] = [];
 
-  constructor(private skillService: SkillService) {}
+
+  constructor(private skillsService: SkillsService) {}
 
   ngOnInit(): void {
-    this.skillService.getSkills().subscribe(data => {
-      this.skills = data.map(e => ({
-        id: e.payload.doc.id,
-        ...e.payload.doc.data()
-      }));
+    this.skillsService.getSkills().subscribe(data => {
+      this.skills = data;
     });
   }
 }

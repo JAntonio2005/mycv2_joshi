@@ -1,7 +1,7 @@
-<ul>
-    <li *ngFor="let cert of certificates">
-      <strong>{{ cert.title }}</strong> issued by {{ cert.issuer }} <br>
-      Issue Date: {{ cert.issueDate }}
-    </li>
-  </ul>
-  
+<h2 class="section-title">Certificados</h2>
+
+<div *ngFor="let cert of certificates" class="info-block">
+  <p><strong>{{ cert.title }}</strong></p>
+  <p><strong>Instituto:</strong> {{ cert.Institute }}</p>
+  <p><strong>Fecha:</strong> {{ cert.date }}</p>
+</div>

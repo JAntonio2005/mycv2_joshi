@@ -1,29 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WorkExperienceService } from '../services/work-experience-service/work-experience.service';
 import { WorkExperience } from '../models/work-experience/work-experience.model';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-work-experience',
   templateUrl: './work-experience.component.html',
   styleUrls: ['./work-experience.component.css']
 })
-export class WorkExperienceComponent {
-  workExperience: WorkExperience[] = [];
+export class WorkExperienceComponent implements OnInit {
+  experiences: WorkExperience[] = [];
 
-  constructor(public workExperienceService: WorkExperienceService)
-   {
-    console.log(this.workExperienceService);
-    this.workExperienceService.getWorkExperience().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c => ({
-          id: c.payload.doc.id,
-          ...c.payload.doc.data()
-        }))
-      )
-    ).subscribe(data => {
-      this.workExperience = data;
-      console.log(this.workExperience);
+  constructor(private workExpService: WorkExperienceService) {}
+
+  ngOnInit(): void {
+    this.workExpService.getWorkExperience().subscribe(data => {
+      this.experiences = data;
+      console.log('Experiencia laboral cargada:', this.experiences);
     });
   }
 }

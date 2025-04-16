@@ -1,28 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderService } from '../services/header-service/header.service';
 import { Header } from '../models/header/header.model';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-  header: Header = new Header();
+export class HeaderComponent implements OnInit {
+  header?: Header;
 
-  constructor(public headerService: HeaderService) {
-    console.log(this.headerService);
-    this.headerService.getHeader().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c => ({
-          id: c.payload.doc.id, 
-          ...c.payload.doc.data()
-        }))
-      )
-    ).subscribe(data => {
-      this.header = data[0];
-      console.log(this.header);
+  constructor(private headerService: HeaderService) {}
+
+  ngOnInit(): void {
+    this.headerService.getHeader().subscribe(data => {
+      if (data.length > 0) {
+        this.header = data[0];
+        console.log('Header cargado:', this.header);
+      } else {
+        console.warn('No se encontró ningún header en Firestore');
+      }
     });
   }
 }

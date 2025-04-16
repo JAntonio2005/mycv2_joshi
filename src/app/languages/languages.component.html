@@ -1,5 +1,8 @@
-<ul>
-    <li *ngFor="let lang of languages">
-      <strong>{{ lang.name }}</strong> - Proficiency: {{ lang.proficiency }}
-    </li>
-  </ul>
+<div>
+  <h2 class="section-title">Languages</h2>
+  <div *ngFor="let lang of languages" class="language-entry">
+    <p><strong>Idioma:</strong> {{ lang.language }}</p>
+    <p><strong>Dominio:</strong> {{ lang.percentage }}</p>
+    <hr>
+  </div>
+</div>

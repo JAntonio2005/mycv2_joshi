@@ -1,5 +1,8 @@
-<ul>
-    <li *ngFor="let skill of skills">
-      <strong>{{ skill.name }}</strong> - Level: {{ skill.level }}
-    </li>
-  </ul>
+<div class="card section">
+  <h2 class="section-title">Skills & Competences</h2>
+
+  <div *ngFor="let skill of skills" class="skill-item">
+    <p><strong>Áreas:</strong> {{ skill.Areas }}</p>
+    <p><strong>Lenguajes:</strong> {{ skill.languagues }}</p>
+  </div>
+</div>

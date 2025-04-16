@@ -1,19 +1,23 @@
+<div class="card header-profile">
+  <!-- Foto al centro -->
+  <div class="header-photo">
+    <img [src]="header?.photoUrl" alt="Profile Picture" class="profile-img" />
+  </div>
 
-    <tr>
-      <td>
-        {{header.name}} <br>
-        {{header.goalLife}}
-      </td>
-      <td>
-        <img src="{{header.photoUrl}}" width='200' height='200'>
-      </td>
-      <td>
-        {{header.email}}<br>
-        {{header.phoneNumber}}<br>
-        {{header.location}}<br>
-        {{header.socialNetwork}}
-      </td>
-    </tr>
- 
-  
-  
+  <!-- Datos centrados debajo -->
+  <div class="header-info">
+    <h2>{{ header?.name }}</h2>
+    <p>{{ header?.goalLife }}</p>
+    
+    <div class="header-contact">
+      <p><i class="pi pi-envelope"></i> {{ header?.email }}</p>
+      <p><i class="pi pi-phone"></i> {{ header?.phoneNumber }}</p>
+      <p><i class="pi pi-map-marker"></i> {{ header?.location }}</p>
+      <p><i class="pi pi-globe"></i> 
+        <a [href]="header?.socialNetwork" target="_blank">
+          {{ header?.socialNetwork }}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

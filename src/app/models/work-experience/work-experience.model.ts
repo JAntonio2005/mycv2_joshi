@@ -1,9 +1,18 @@
 export class WorkExperience {
-    id?: string;
-    startDate?: string = 'mmm-yyyy';
-    endDate?: string = 'mmm-yyyy';
-    location?: string = 'city, country';
-    position?: string = 'my position';
-    company?: string = 'my company';
-    accomplishments?: string = 'item1, item2, item n';
+  id?: string;
+  company: string;
+  position: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  accomplishment: string;
+
+  constructor() {
+    this.company = '';
+    this.position = '';
+    this.location = '';
+    this.startDate = '';
+    this.endDate = '';
+    this.accomplishment = '';
   }
+}
