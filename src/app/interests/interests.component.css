@@ -1,0 +1,23 @@
+.profile-section {
+    margin-top: 1.5rem;
+  }
+  
+  .profile-section h2 {
+    font-size: 1.2rem;
+    border-bottom: 2px solid #999;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .profile-section ul {
+    padding-left: 1.2rem;
+    list-style-type: disc;
+  }
+  
+  .profile-section li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  

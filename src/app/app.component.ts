@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
+import { Header } from './models/header/header.model';
+import { HeaderService } from './services/header-service/header.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mycv2';
-}
+  header: Header | undefined;
+
+  constructor(private headerService: HeaderService) {
+    this.headerService.getHeader().subscribe(data => {
+      this.header = data[0];
+    });
+  }}    

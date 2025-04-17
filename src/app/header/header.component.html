@@ -1,23 +1,11 @@
-<div class="card header-profile">
-  <!-- Foto al centro -->
-  <div class="header-photo">
-    <img [src]="header?.photoUrl" alt="Profile Picture" class="profile-img" />
-  </div>
-
-  <!-- Datos centrados debajo -->
-  <div class="header-info">
-    <h2>{{ header?.name }}</h2>
-    <p>{{ header?.goalLife }}</p>
-    
-    <div class="header-contact">
-      <p><i class="pi pi-envelope"></i> {{ header?.email }}</p>
-      <p><i class="pi pi-phone"></i> {{ header?.phoneNumber }}</p>
-      <p><i class="pi pi-map-marker"></i> {{ header?.location }}</p>
-      <p><i class="pi pi-globe"></i> 
-        <a [href]="header?.socialNetwork" target="_blank">
-          {{ header?.socialNetwork }}
-        </a>
-      </p>
-    </div>
-  </div>
+<img [src]="header?.photoUrl" alt="Foto de perfil" class="profile-img" />
+<h2 class="header-name">{{ header?.name }}</h2>
+<p class="header-goal">{{ header?.goalLife }}</p>
+<div class="contact-info">
+  <p><i class="fas fa-envelope"></i> {{ header?.email }}</p>
+  <p><i class="fas fa-phone"></i> {{ header?.phoneNumber }}</p>
+  <p><i class="fas fa-map-marker-alt"></i> {{ header?.location }}</p>
+  <p><i class="fas fa-globe"></i>
+    <a [href]="header?.socialNetwork" target="_blank">{{ header?.socialNetwork }}</a>
+  </p>
 </div>

@@ -1,0 +1,42 @@
+.experience-section {
+    margin-bottom: 2rem;
+  }
+  
+  .experience-section h2 {
+    font-size: 1.2rem;
+    border-bottom: 2px solid #999;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .job-entry {
+    margin-bottom: 1.5rem;
+  }
+  
+  .job-title {
+    font-size: 1rem;
+    color: #222;
+    margin-bottom: 0.2rem;
+  }
+  
+  .job-info {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.1rem;
+  }
+  
+  .job-dates {
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 0.3rem;
+  }
+  
+  .job-desc {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.5;
+  }
+  

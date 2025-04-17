@@ -11,7 +11,12 @@ export class LanguagesComponent implements OnInit {
   languages: Languages[] = [];
 
   constructor(private languagesService: LanguagesService) {}
-
+  getPercentage(value: string): string {
+    // Elimina el % si lo tiene, y lo vuelve a agregar correctamente
+    const num = parseInt(value.replace('%', ''), 10);
+    return `${num}%`;
+  }
+  
   ngOnInit(): void {
     this.languagesService.getLanguages().subscribe(data => {
       this.languages = data;

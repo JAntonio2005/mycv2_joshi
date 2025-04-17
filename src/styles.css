@@ -1,99 +1,37 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f7f6;
-  color: #1c1c1c;
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 2rem 1rem;
-}
-
-/* Header alineado centrado sin card */
-.header-cell {
-  text-align: center;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid #ccc;
-}
-
-/* Tabla base con separación ordenada */
-.cv-table {
-  width: 100%;
-  max-width: 1100px;
-  margin: auto;
-  border-spacing: 2rem;
-}
-
-.cv-table td {
-  vertical-align: top;
-  width: 50%;
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Títulos secciones */
-.section-title {
-  color: #d32f2f;
-  font-weight: bold;
-  font-size: 1.4rem;
-  border-bottom: 2px solid #d32f2f;
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
-}
-
-/* Foto perfil */
-.profile-img {
-  border-radius: 50%;
-  width: 130px;
-  height: 130px;
-  object-fit: cover;
-  border: 3px solid #007bff;
-  display: inline-block;
-}
-
-/* Header */
-.header-profile {
-  text-align: center;
-}
-
-.header-profile h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin: 0.5rem 0;
-}
-
-.header-profile p {
-  margin: 0.25rem 0;
-  font-size: 0.95rem;
-}
-
-.header-contact {
-  margin-top: 1rem;
-}
-
-.header-contact p {
+.cv-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.header-contact i {
-  color: #007bff;
-}
-
-.header-contact a {
-  color: #007bff;
-  text-decoration: none;
-}
-.cv-wrapper {
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 2rem auto;
-  background-color: #fff;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  gap: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1c1c1c;
+}
+
+.cv-left {
+  width: 35%;
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.cv-right {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profile-section h2 {
+  font-size: 1.2rem;
+  border-bottom: 2px solid #999;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.profile-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
 }

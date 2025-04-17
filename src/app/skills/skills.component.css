@@ -1,0 +1,37 @@
+.skills-section {
+    margin-bottom: 2rem;
+  }
+  
+  .skills-section h2 {
+    font-size: 1.2rem;
+    border-bottom: 2px solid #999;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .skill-item {
+    margin-bottom: 1rem;
+  }
+  
+  .skill-label {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: #333;
+  }
+  
+  .skill-bar {
+    background-color: #ddd;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .skill-fill {
+    width: 100%; /* No usamos porcentaje real, solo estilo fijo */
+    height: 100%;
+    background-color: #d32f2f;
+    border-radius: 4px;
+  }
+  

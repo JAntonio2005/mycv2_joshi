@@ -1,6 +1,9 @@
-<h2 class="section-title">Educación</h2>
-<div *ngFor="let item of educationList" class="education-entry">
-  <p class="education-grade"><strong>{{ item.grade }}</strong></p>
-  <p><strong>Institución:</strong> {{ item.educativeInstitute }}</p>
-  <p><strong>Fecha:</strong> {{ item.date }}</p>
-</div>
+<section class="profile-section">
+  <h2>Educación</h2>
+  <div *ngFor="let edu of educationList">
+    <p><strong>{{ edu.grade }}</strong></p>
+    <p><strong>Institución:</strong> {{ edu.educativeInstitute }}</p>
+    <p><strong>Fecha:</strong> {{ edu.date }}</p>
+    <hr />
+  </div>
+</section>

@@ -1,7 +1,9 @@
-<h2 class="section-title">Certificados</h2>
-
-<div *ngFor="let cert of certificates" class="info-block">
-  <p><strong>{{ cert.title }}</strong></p>
-  <p><strong>Instituto:</strong> {{ cert.Institute }}</p>
-  <p><strong>Fecha:</strong> {{ cert.date }}</p>
-</div>
+<section class="profile-section">
+  <h2>Certificados</h2>
+  <div *ngFor="let cert of certificates">
+    <p><strong>{{ cert.title }}</strong></p>
+    <p><strong>Instituto:</strong> {{ cert.Institute }}</p>
+    <p><strong>Fecha:</strong> {{ cert.date }}</p>
+    <hr>
+  </div>
+</section>
