@@ -1,1 +1,9 @@
-<p>work-experience works!</p>
+<section class="experience-section">
+  <h2>Experiencia Laboral</h2>
+  <div *ngFor="let job of experiences" class="job-entry">
+    <p class="job-title"><strong>{{ job.position }}</strong></p>
+    <p class="job-info">{{ job.company }} | {{ job.location }}</p>
+    <p class="job-dates">{{ job.startDate }} - {{ job.endDate }}</p>
+    <p class="job-desc">{{ job.accomplishment }}</p>
+  </div>
+</section>

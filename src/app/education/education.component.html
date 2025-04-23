@@ -1,1 +1,9 @@
-<p>education works!</p>
+<section class="profile-section">
+  <h2>Educación</h2>
+  <div *ngFor="let edu of educationList">
+    <p><strong>{{ edu.grade }}</strong></p>
+    <p><strong>Institución:</strong> {{ edu.educativeInstitute }}</p>
+    <p><strong>Fecha:</strong> {{ edu.date }}</p>
+    <hr />
+  </div>
+</section>

@@ -1,1 +1,10 @@
-<p>languages works!</p>
+<section class="languages-section">
+  <h2>Idiomas</h2>
+  <div *ngFor="let lang of languages" class="language-item">
+    <p class="language-name"><strong>{{ lang.language }}</strong> - {{ lang.percentage }}%</p>
+    <div class="language-bar">
+      <div class="language-fill" [style.width]="getPercentage(lang.percentage)"></div>
+
+    </div>
+  </div>
+  
