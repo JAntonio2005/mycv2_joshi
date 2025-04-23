@@ -1,31 +1,50 @@
-name: CI/CD deploy release
+name: Deploy Angular App to GitHub Pages
+
 on:
   push:
-    branches: ["deploy-release"]
-  pull_request:
-    branches: ["deploy-release"]
+    branches:
+      - deploy-release  # Cambia esto si tu rama es distinta
+  workflow_dispatch:
 
 jobs:
-  ci_cd_deploy_release:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: Build the custom Docker image
-        run: |
-          docker commit --change "ENV MODEL_NAME ${{secrets.MODEL_NAME}}" serving_base ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github.sha}}
-      
-      - name: show docker images
-        run: |
-          docker images
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: docker login
-        env:
-          DOCKER_USER: ${{secrets.DOCKER_USER}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      - name: Docker Push
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
         run: |
-          docker push ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github.sha}}
+          npm install -g @angular/cli
+          ng build --configuration production --base-href "/mycv2_joshi/"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: dist/mycv2
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
